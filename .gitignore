@@ -7,3 +7,4 @@ CMakeUserPresets.json
 .cache/
 .clangd
 tsconfig.tsbuildinfo
+.env
