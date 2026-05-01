@@ -1,0 +1,22 @@
+syntax = "proto3";
+package proto;
+
+import "order.proto";  // import Order from order.proto
+
+// ----- ENUMS -----
+
+enum ActionType {
+  ADD_ORDER = 0;
+  CANCEL_ORDER = 1;
+  UPDATE_ORDER = 2;
+}
+
+// ----- API → Matching Engine MESSAGE -----
+
+message engineRequest {
+  int32 order_id = 1;        // used mainly for CANCEL_ORDER
+  string ticker = 2;         // for quick routing to correct orderbook
+  ActionType action = 3;     // ADD, CANCEL, UPDATE
+  Order order = 4;           // from order.proto, null / empty for CANCEL
+}
+

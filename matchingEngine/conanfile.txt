@@ -1,0 +1,9 @@
+[requires]
+protobuf/5.29.3
+spdlog/1.16.0  # Use the latest version we found
+zeromq/4.3.5
+cppzmq/4.10.0
+
+[generators]
+CMakeDeps
+CMakeToolchain

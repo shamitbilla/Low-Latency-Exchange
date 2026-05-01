@@ -1,0 +1,36 @@
+syntax = "proto3";
+package proto;
+
+// --- ENUMS ---
+
+enum OrderSide {
+    BUY = 0;
+    SELL = 1;
+}
+
+enum OrderType {
+    LIMIT = 0;
+    MARKET = 1;
+}
+
+enum OrderStatus {
+    OPEN = 0;
+    FILLED = 1;
+    PARTIALLY_FILLED = 2;
+    CANCELLED = 3;
+}
+
+// --- MESSAGE ---
+
+message Order {
+    uint64 id = 1;
+    uint64 userId = 2;
+    string ticker = 3;
+    OrderSide orderSide = 4;
+    double price = 5;
+    uint64 quantity = 6;
+    OrderType orderType = 7;
+    OrderStatus orderStatus = 8;
+    int64 timestamp = 9; // Unix time
+}
+

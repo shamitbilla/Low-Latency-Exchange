@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+// Ensure this file belongs to the same namespace as your other Protobuf messages
+package proto;
+
+// Import the OrderEventType definition from the OrderEvent file
+import "orderEvent.proto"; 
+
+// --- MESSAGE: Transaction ---
+// Corresponds to C++ struct transaction
+// Represents a single executed trade
+message Transaction {
+    string ticker = 1;
+    uint64 buy_order_id = 2;
+    uint64 sell_order_id = 3;
+    uint64 buyer_id = 4;
+    uint64 seller_id = 5;
+    double price = 6;
+    uint64 quantity = 7;
+    // Stored as epoch time (e.g., milliseconds or microseconds)
+    int64 timestamp = 8; 
+}
+
+// --- MESSAGE: TradeEvent ---
+// Corresponds to C++ struct tradeEvent
+message TradeEvent {
+    // Uses the existing OrderEventType enum (e.g., TRADE_EXECUTED)
+    OrderEventType event = 1;
+
+    // The 'repeated' keyword handles the conversion from std::vector<transaction>
+    repeated Transaction trades = 2;
+}

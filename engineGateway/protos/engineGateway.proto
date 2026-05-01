@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package proto;
+
+import "order.proto";
+
+
+message addOrUpdateGatewayRequest{
+  string secret = 1;
+  Order order = 2;
+}
+
+message deleteOrderGatewayRequest{
+  string secret = 1;
+  uint64 orderId = 2;
+}
+
+num gatewayResponseStatus{
+  UNKNOWN = 0;
+  ACCEPTED = 1;
+  REJECTED = 2;
+}
+
+message gatewayResponse{
+  string status = 1;
+  string message = 2;
+}
+
+service EngineGatewayService{
+  rpc AddOrder (addOrUpdateGatewayRequest) returns (gatewayResponse);
+  // rpc UpdateOrder (addOrUpdateGatewayRequest) returns (gatewayResponse);
+  // rpc DeleteOrder (deleteOrderGatewayRequest) returns (gatewayResponse);
+}

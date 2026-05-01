@@ -1,0 +1,27 @@
+syntax = "proto3";
+package proto;
+
+import "order.proto";  // import Order from order.proto
+
+// --- ENUMS ---
+
+enum OrderEventType {
+    ORDER_ADDED = 0;
+    ORDER_CANCELLED = 1;
+    ORDER_UPDATED = 2;
+    TRADE_EXECUTABLE = 3;
+    ORDER_ADD_FAILED = 4;
+    ORDER_UPDATE_FAILED = 5;
+    ORDER_CANCEL_FAILED = 6;
+    TRADE_EXECUTE_FAILED = 7;
+    TRADE_EXECUTED = 8;
+}
+
+// --- MESSAGE ---
+
+message OrderEvent {
+    OrderEventType event = 1;
+    Order order = 2;   // from order.proto
+    string message = 3;
+}
+
