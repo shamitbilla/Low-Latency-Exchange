@@ -1,3 +1,0 @@
-CompileFlags:
-  Add: [-Ivcpkg_installed/x64-linux/include, -Iinclude, -std=c++17]
-
